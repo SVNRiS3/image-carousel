@@ -23,9 +23,8 @@ h1 {
 
 .carousel {
   position: relative;
-  width: 100%;
-  padding: 20px;
   overflow: hidden;
+  margin: 20px;
 }
 
 .carousel-img {
@@ -34,14 +33,12 @@ h1 {
 
 .carousel-imgs {
   display: flex;
-  gap: 20px;
 }
 
 .controls {
   position: absolute;
   bottom: 50px;
   width: 100%;
-  margin-left: -20px;
   display: flex;
   justify-content: center;
   gap: 20%;
