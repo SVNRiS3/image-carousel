@@ -4,19 +4,20 @@ export default class Carousel {
   }
 
   init() {
-    // transform: translateX(-100%)
     this.carousels.forEach((carousel) => {
       let translateValue = 0;
       const carouselImgs = carousel.querySelector(".carousel-imgs");
-      const carouselControls = carousel.querySelector(".controls").children;
-      carouselControls[0].addEventListener("click", () => {
-        translateValue += 100;
-        carouselImgs.style.transform = `translateX(${translateValue}%)`;
-      });
-      carouselControls[1].addEventListener("click", () => {
-        translateValue -= 100;
-        carouselImgs.style.transform = `translateX(${translateValue}%)`;
-      });
+      const imgsAmount = carouselImgs.children.length;
+      const [prevBtn, nextBtn] = carousel.querySelector(".controls").children;
+
+      const addBtnControl = (btn, direction) => {
+        btn.addEventListener("click", () => {
+          translateValue += direction * 100;
+          carouselImgs.style.transform = `translateX(${translateValue}%)`;
+        });
+      };
+      addBtnControl(prevBtn, 1);
+      addBtnControl(nextBtn, -1);
     });
   }
 }
