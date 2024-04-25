@@ -1,3 +1,5 @@
 import "./style.css";
+import Carousel from "./Carousel";
 
-console.log("Hello, world!");
+const carousel = new Carousel(".carousel");
+carousel.init();
