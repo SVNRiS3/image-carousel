@@ -1,17 +1,37 @@
-*, ::before, ::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 :root {
-	font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
-	font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial,
-		sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-		"Segoe UI Symbol";
-	font-size: 1.6rem;
-	line-height: 1.5;
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+h1 {
+  text-align: center;
+}
+
+.carousel {
+  width: 100%;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.carousel-img {
+  min-width: 100%;
+}
+
+.carousel-imgs {
+  display: flex;
+  gap: 20px;
 }
