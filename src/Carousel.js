@@ -3,6 +3,17 @@ export default class Carousel {
     this.carousels = document.querySelectorAll(carouselClass);
   }
 
+  makeNavigationDots(nOfImgs, carouselEl) {
+    const naviDots = document.createElement("div");
+    naviDots.classList.add("navi-dots");
+    for (let i = 0; i < nOfImgs; i++) {
+      const naviDot = document.createElement("button");
+      naviDot.classList.add("navi-dot");
+      naviDots.appendChild(naviDot);
+    }
+    carouselEl.appendChild(naviDots);
+  }
+
   init() {
     this.carousels.forEach((carousel) => {
       let translateValue = 0;
@@ -20,6 +31,7 @@ export default class Carousel {
       };
       addBtnControl(prevBtn, 1);
       addBtnControl(nextBtn, -1);
+      this.makeNavigationDots(imgsAmount, carousel);
     });
   }
 }

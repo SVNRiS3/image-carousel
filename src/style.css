@@ -55,6 +55,7 @@ h1 {
   border: none;
   color: white;
   padding: 0 5%;
+  cursor: pointer;
 }
 
 .controls > button:hover {
@@ -63,4 +64,23 @@ h1 {
 
 .controls > button:active {
   background-color: black;
+}
+
+.navi-dots {
+  display: flex;
+  position: absolute;
+  bottom: 5%;
+  left: 0;
+  right: 0;
+  justify-content: center;
+  gap: 10px;
+}
+
+.navi-dot {
+  width: 10px;
+  height: 10px;
+  background-color: lightgray;
+  border: 1px solid black;
+  border-radius: 32px;
+  cursor: pointer;
 }
