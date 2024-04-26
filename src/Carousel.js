@@ -9,6 +9,7 @@ export default class Carousel {
     for (let i = 0; i < nOfImgs; i++) {
       const naviDot = document.createElement("button");
       naviDot.classList.add("navi-dot");
+      if (i == 0) naviDot.style.backgroundColor = "gray";
       naviDots.appendChild(naviDot);
     }
     carouselEl.appendChild(naviDots);
@@ -21,12 +22,23 @@ export default class Carousel {
       const imgsAmount = carouselImgs.children.length;
       const [prevBtn, nextBtn] = carousel.querySelector(".controls").children;
 
+      const colorCurrentImgDot = () => {
+        const currentImgNo =
+          carousel.children[0].style.transform.match(/\d/)[0];
+        const naviDots = carousel.querySelectorAll("navi-dot");
+        naviDots.forEach((dot) => {
+          dot.style.backgroundColor = "lightgray";
+        });
+        naviDots[currentImgNo].style.backgroundColor = "gray";
+      };
+
       const addBtnControl = (btn, direction) => {
         btn.addEventListener("click", () => {
           translateValue += direction * 100;
           if (translateValue < -(imgsAmount - 1) * 100) translateValue = 0;
           else if (translateValue > 0) translateValue = -(imgsAmount - 1) * 100;
           carouselImgs.style.transform = `translateX(${translateValue}%)`;
+          colorCurrentImgDot(carousel);
         });
       };
       addBtnControl(prevBtn, 1);
