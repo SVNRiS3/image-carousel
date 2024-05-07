@@ -34,20 +34,21 @@ export default class Carousel {
         naviDots[currentImgNo].style.backgroundColor = "gray";
       };
 
-      const addNavControls = () => {
-        naviDots.forEach((dot, index) => {
-          dot.addEventListener("click", () => {
-            carouselImgs.style.transform = `translateX(${-index * 100}%)`;
-            colorCurrentImgDot();
-          });
-        });
-      };
-
       const translateDiv = (direction) => {
         translateValue += direction * 100;
         if (translateValue < -(imgsAmount - 1) * 100) translateValue = 0;
         else if (translateValue > 0) translateValue = -(imgsAmount - 1) * 100;
         carouselImgs.style.transform = `translateX(${translateValue}%)`;
+      };
+
+      const addNavControls = () => {
+        naviDots.forEach((dot, index) => {
+          dot.addEventListener("click", () => {
+            translateValue = -index * 100;
+            carouselImgs.style.transform = `translateX(${translateValue}%)`;
+            colorCurrentImgDot();
+          });
+        });
       };
 
       const addBtnControl = (btn, direction) => {
