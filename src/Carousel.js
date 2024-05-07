@@ -25,14 +25,6 @@ export default class Carousel {
       const getcurrentImgNo = () =>
         carousel.children[0].style.transform.match(/\d/)[0];
 
-      const addNavControls = () => {
-        naviDots.forEach((dot, index) => {
-          dot.addEventListener("click", () => {
-            carouselImgs.style.transform = `translateX(${-index * 100}%)`;
-          });
-        });
-      };
-
       const colorCurrentImgDot = () => {
         const currentImgNo = getcurrentImgNo();
 
@@ -40,6 +32,15 @@ export default class Carousel {
           dot.style.backgroundColor = "lightgray";
         });
         naviDots[currentImgNo].style.backgroundColor = "gray";
+      };
+
+      const addNavControls = () => {
+        naviDots.forEach((dot, index) => {
+          dot.addEventListener("click", () => {
+            carouselImgs.style.transform = `translateX(${-index * 100}%)`;
+            colorCurrentImgDot();
+          });
+        });
       };
 
       const addBtnControl = (btn, direction) => {
