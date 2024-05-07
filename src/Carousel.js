@@ -43,20 +43,32 @@ export default class Carousel {
         });
       };
 
+      const translateDiv = (direction) => {
+        translateValue += direction * 100;
+        if (translateValue < -(imgsAmount - 1) * 100) translateValue = 0;
+        else if (translateValue > 0) translateValue = -(imgsAmount - 1) * 100;
+        carouselImgs.style.transform = `translateX(${translateValue}%)`;
+      };
+
       const addBtnControl = (btn, direction) => {
         btn.addEventListener("click", () => {
-          translateValue += direction * 100;
-          if (translateValue < -(imgsAmount - 1) * 100) translateValue = 0;
-          else if (translateValue > 0) translateValue = -(imgsAmount - 1) * 100;
-          carouselImgs.style.transform = `translateX(${translateValue}%)`;
+          translateDiv(direction);
           colorCurrentImgDot();
         });
+      };
+
+      const autoAdvance = (direction) => {
+        setInterval(() => {
+          translateDiv(direction);
+          colorCurrentImgDot();
+        }, 5000);
       };
       addBtnControl(prevBtn, 1);
       addBtnControl(nextBtn, -1);
       this.makeNavigationDots(imgsAmount, carousel);
       const naviDots = carousel.querySelectorAll(".navi-dot");
       addNavControls();
+      autoAdvance(-1);
     });
   }
 }
