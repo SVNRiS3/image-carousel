@@ -25,7 +25,7 @@ export default class Carousel {
       const colorCurrentImgDot = () => {
         const currentImgNo =
           carousel.children[0].style.transform.match(/\d/)[0];
-        const naviDots = carousel.querySelectorAll("navi-dot");
+        const naviDots = carousel.querySelectorAll(".navi-dot");
         naviDots.forEach((dot) => {
           dot.style.backgroundColor = "lightgray";
         });
@@ -38,7 +38,7 @@ export default class Carousel {
           if (translateValue < -(imgsAmount - 1) * 100) translateValue = 0;
           else if (translateValue > 0) translateValue = -(imgsAmount - 1) * 100;
           carouselImgs.style.transform = `translateX(${translateValue}%)`;
-          colorCurrentImgDot(carousel);
+          colorCurrentImgDot();
         });
       };
       addBtnControl(prevBtn, 1);
